@@ -1,0 +1,40 @@
+<%= render "header" %>
+
+<div class="container">
+<table>
+    <tr>
+      	<td>External ID:</td>
+      	<td><%= @ticket["ticket"]["external_id"] %></td>
+    </tr>
+
+    <tr>
+        <td>Type: </td>
+        <td><%= @ticket["ticket"]["type"] %></td>
+    </tr>
+
+    <tr>
+        <td>Subject: </td>
+        <td><%= @ticket["ticket"]["subject"] %></td>
+    </tr>
+
+    <tr>
+        <td>Description: </td>
+        <td><%= @ticket["ticket"]["description"] %></td>
+    </tr>
+
+    <tr>
+        <td>Priority: </td>
+        <td><%= @ticket["ticket"]["priority"] %></td>
+    </tr>
+
+    <tr>
+        <td>Status: </td>
+        <td><%= @ticket["ticket"]["status"] %> </td>
+    </tr>
+
+    <tr>
+        <td>Recipient: </td>
+        <td><%= @ticket["ticket"]["recipient"] %> </td>
+    </tr>
+    </table>
+</div>

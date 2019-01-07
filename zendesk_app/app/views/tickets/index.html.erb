@@ -1,0 +1,37 @@
+<%= render "header" %>
+
+<% if not @tickets.key?("error") %>
+	<div class="table-responsive">
+		<table class="table">
+			<tr>
+		    	<th>ID</th>
+		    	<th>Type</th>
+		    	<th>Subject</th>
+		    	<th>Priority</th>
+		  	</tr>
+
+		  	<% @tickets["tickets"].each do |ticket| %>
+				<tr>
+				 	<td><%= link_to ticket["id"], "/tickets/#{ticket["id"]}" %></td>
+				 	<td><%= ticket["type"] %></td>
+				 	<td><%= ticket["subject"] %></td>
+				 	<td><%= ticket["priority"] %></td>
+				</tr>
+			<% end %>
+
+		</table>
+	</div>
+
+	<% uri = URI.parse(url_for(:only_path => false)) %>
+	<% if @tickets["previous_page"].present? %>
+		<% previous_page = Rack::Utils.parse_nested_query(@tickets["previous_page"]).values.first
+		uri.query = ["page=#{previous_page}"].join('&') %>
+		<%= link_to "Previous", uri.to_s %>
+	<% end %>
+
+	<% if @tickets["next_page"].present? %>
+		<% next_page = Rack::Utils.parse_nested_query(@tickets["next_page"]).values.first
+		uri.query = ["page=#{next_page}"].join('&') %>
+		<%= link_to "Next", uri.to_s %>
+	<% end %>
+<% end %>

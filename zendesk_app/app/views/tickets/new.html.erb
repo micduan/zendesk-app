@@ -1,0 +1,44 @@
+<%= render "header" %>
+
+<div class="container">
+  <%= form_tag("/tickets", method: "post") do %>
+    <table>
+      <tr>
+      	<td align="left"><%= label_tag(:external_id, "External ID:") %></td>
+      	<td align="right"><%= text_field_tag(:external_id) %></td>
+      </tr>
+
+      <tr>
+        <td><%= label_tag(:type, "Type:") %></td>
+        <td><%= select_tag(:type, options_for_select([[nil], ["problem"], ["incident"], ["question"], ["task"]])) %></td>
+      </tr>
+
+      <tr>
+        <td><%= label_tag(:subject, "Subject:") %></td>
+        <td><%= text_field_tag(:subject) %></td>
+      </tr>
+
+      <tr>
+        <td><%= label_tag(:description, "Description:") %></td>
+        <td><%= text_area_tag(:description) %></td>
+      </tr>
+
+      <tr>
+        <td><%= label_tag(:priority, "Priority:") %></td>
+        <td><%= select_tag(:priority, options_for_select([[nil], ["urgent"], ["high"], ["normal"], ["low"]])) %></td>
+      </tr>
+
+      <tr>
+        <td><%= label_tag(:status, "Status:") %></td>
+        <td><%= select_tag(:status, options_for_select([["new"], ["open"], ["pending"], ["hold"], ["closed"], ["solved"]])) %> </td>
+      </tr>
+
+      <tr>
+        <td><%= label_tag(:recipient, "Recipient:") %></td>
+        <td><%= text_field_tag(:recipient) %> </td>
+      </tr>
+    </table>
+
+    <%= submit_tag("Create") %>
+  <% end %>
+</div>

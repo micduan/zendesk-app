@@ -1,0 +1,13 @@
+<%= render :partial => 'tickets/header' %>
+
+<% if session[:user_email].nil? %>
+	Set
+<% else %>
+	Change
+<% end %>
+ the email you're accessing the API with.
+<%= form_tag do %>
+	<%= label_tag(:user_email, "Your email address:") %>
+  	<%= text_field_tag(:user_email) %>
+  	<%= submit_tag("Submit") %>
+<% end %>
